@@ -1,0 +1,103 @@
+#N canvas 180 58 906 564 10;
+#X obj 234 207 osc~;
+#X obj 234 180 *~;
+#X obj 212 148 +~;
+#X obj 213 265 +~;
+#X obj 234 233 *~;
+#X obj 212 299 osc~;
+#X floatatom 491 167 5 0 0 0 - mainfreq -;
+#X obj 151 359 dac~;
+#X floatatom 332 149 5 0 0 0 - fmratio -;
+#X floatatom 334 181 5 0 0 0 - fmamount -;
+#X obj 156 333 *~;
+#X obj 137 286 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 283 205 *~;
+#X floatatom 99 306 5 0 0 0 - - -;
+#X obj 212 377 delwrite~ delay1 5000;
+#X obj 232 94 delread~ delay1 5000;
+#X text 399 137 FM ratio;
+#X text 397 165 FM amount;
+#X text 534 161 Main Frequency;
+#X floatatom 245 59 5 0 0 0 - delaytime -;
+#X text 294 60 Delay Time;
+#X obj 212 326 *~ 200;
+#X floatatom 255 302 5 0 0 0 - feedmult -;
+#X text 290 301 Feedback Multiplier;
+#X obj 481 93 noise~;
+#X obj 452 120 snapshot~;
+#X obj 403 8 bng 15 250 50 0 empty randbang empty 17 7 0 10 -262144
+-1 -1;
+#X obj 403 64 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 452 236 line~;
+#X obj 416 35 del 1000;
+#X msg 452 214 \$1 50;
+#X obj 452 166 + 1;
+#X obj 452 143 * 0.7;
+#X obj 452 193 *;
+#X obj 403 89 metro 100;
+#X obj 485 54 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 396 214 5 0 0 0 - - -;
+#X obj 212 351 *~;
+#X obj 290 329 tgl 15 0 empty feedbackonoff empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X text 312 327 Feedback On/Off;
+#X obj 451 263 *~;
+#X obj 509 204 bng 15 250 50 0 empty randbang empty 17 7 0 10 -262144
+-1 -1;
+#X obj 509 260 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 522 231 del 1000;
+#X floatatom 580 206 5 0 0 0 - delaytime -;
+#X msg 449 376 \; mainfreq 600 \; feedmult 1000 \; fmratio 7.21 \;
+fmamount 0.9 \; delaytime 2579 \; randbang bang \; feedbackonoff 1
+;
+#X msg 595 396 \; mainfreq 200 \; feedmult 1000 \; fmratio 3 \; fmamount
+0.5 \; delaytime 5000 \; randbang bang \; feedbackonoff 1;
+#X msg 736 365 \; mainfreq 500 \; feedmult 700 \; fmratio 7.2 \; fmamount
+0.9 \; delaytime 4789 \; randbang bang \; feedbackonoff 1;
+#X connect 0 0 4 0;
+#X connect 1 0 0 0;
+#X connect 1 0 12 0;
+#X connect 2 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 5 0;
+#X connect 4 0 3 1;
+#X connect 5 0 10 1;
+#X connect 5 0 21 0;
+#X connect 6 0 33 1;
+#X connect 8 0 1 1;
+#X connect 9 0 12 1;
+#X connect 10 0 7 0;
+#X connect 10 0 7 1;
+#X connect 11 0 10 0;
+#X connect 12 0 4 1;
+#X connect 13 0 10 0;
+#X connect 15 0 2 0;
+#X connect 19 0 15 0;
+#X connect 21 0 37 0;
+#X connect 22 0 21 1;
+#X connect 24 0 25 0;
+#X connect 25 0 32 0;
+#X connect 26 0 27 0;
+#X connect 26 0 29 0;
+#X connect 27 0 34 0;
+#X connect 28 0 40 0;
+#X connect 29 0 27 0;
+#X connect 30 0 28 0;
+#X connect 31 0 33 0;
+#X connect 32 0 31 0;
+#X connect 33 0 30 0;
+#X connect 33 0 36 0;
+#X connect 34 0 25 0;
+#X connect 35 0 25 0;
+#X connect 37 0 14 0;
+#X connect 38 0 37 1;
+#X connect 40 0 2 1;
+#X connect 41 0 42 0;
+#X connect 41 0 43 0;
+#X connect 42 0 40 1;
+#X connect 43 0 42 0;
+#X connect 44 0 43 1;
